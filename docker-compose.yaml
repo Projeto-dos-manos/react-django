@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend:/app/code
+      - ./frontend:/app
     networks:
       - react-django
 
@@ -16,7 +16,7 @@ services:
     ports:
       - "7000:7000"
     volumes:
-      - ./backend:/app/code
+      - ./backend:/app
     networks:
       - react-django
     
