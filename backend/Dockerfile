@@ -5,12 +5,13 @@ ENV DJANGO_SETTINGS_MODULE myproject.settings
 
 WORKDIR /app
 
-
 RUN pip install djangorestframework
 
 RUN pip install Django
 
 COPY . .
+
+RUN python manage.py makemigrations
 
 RUN python manage.py migrate
 
