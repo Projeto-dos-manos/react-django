@@ -5,6 +5,9 @@ ENV DJANGO_SETTINGS_MODULE myproject.settings
 
 WORKDIR /app
 
+
+RUN pip install djangorestframework
+
 RUN pip install Django
 
 COPY . .
