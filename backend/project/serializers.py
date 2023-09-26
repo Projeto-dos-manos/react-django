@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
+from .models import UserProfile
 from rest_framework import routers, serializers, viewsets
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        model = UserProfile
+        fields = [ 'email', 'password']
