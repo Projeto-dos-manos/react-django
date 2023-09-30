@@ -4,5 +4,6 @@ from rest_framework import routers, serializers, viewsets
 
 
 urlpatterns = [
-    path('', include('project.urls'))
+    path('', include('project.urls')),
+
 ]

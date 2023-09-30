@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'project',
     'rest_framework',
+    
 ]
 
 
@@ -90,6 +91,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'meio',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '250303',
+    #     'HOST': 'localhost',  # Ou o endereço do servidor PostgreSQL
+    #     'PORT': '',           # Deixe em branco para usar a porta padrão (5432)
+    # } 
+
 }
 
 
