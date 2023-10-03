@@ -26,7 +26,7 @@ export const NavbarContent = styled(DefaultContent)`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 40vw;
+        width: 75%;
         padding: 10px 20px;
         border-radius: 20px;
         background-color: white;
@@ -57,14 +57,31 @@ export const NavbarContent = styled(DefaultContent)`
         width: 35px;
         height: 35px;
     }
+
+    @media(min-width: 1200px) {
+        .search-container {
+            width: 40vw;
+        }
+    }
 `
 
 export const NavbarItems = styled(DefaultContent)`
     display: flex;
-    justify-content: space-between;
     color: white;
-
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 10px;
+    
     .navbar-item {
         cursor: pointer;
+    }
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    
+    @media(min-width: 1200px) {
+        justify-content: space-between;
+        overflow-x: hidden;
     }
 `

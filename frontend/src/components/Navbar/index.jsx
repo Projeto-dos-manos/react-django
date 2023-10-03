@@ -2,6 +2,7 @@ import { NavbarContainer, NavbarContent, NavbarItems } from "./styles";
 import { FiSearch } from "react-icons/fi";
 import { ImRocket, ImCart, ImProfile } from "react-icons/im";
 import { BsCart, BsPerson } from "react-icons/bs"
+import { AiOutlineMenu } from "react-icons/ai"
 
 const Navbar = () => {
     return (
@@ -13,8 +14,9 @@ const Navbar = () => {
                     <FiSearch className="search-icon" />
                 </div>
                 <div className="navbar-icons">
-                    <BsCart className="icon" />
-                    <BsPerson className="icon profile" />
+                    <BsCart className="icon desktop" />
+                    <BsPerson className="icon profile desktop" />
+                    <AiOutlineMenu className="icon mobile" />
                 </div>
             </NavbarContent>
             <NavbarItems>

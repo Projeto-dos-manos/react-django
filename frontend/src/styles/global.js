@@ -92,6 +92,24 @@ export const Global = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    @media(min-width: 1200px) {
+        .desktop {
+            display: flex;
+        }
+
+        .mobile {
+            display: none;
+        }
+    }
 `;
 
 export const DefaultContainer = styled.div`
