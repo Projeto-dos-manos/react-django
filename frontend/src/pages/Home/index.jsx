@@ -1,9 +1,10 @@
 import DefaultPageComponent from "../../components/DefaultPageComponent";
+import HomeCarousel from "../../components/HomeCarousel";
 
 const Home = () => {
     return(
         <DefaultPageComponent>
-            <h2>Opa</h2>
+            <HomeCarousel />
         </DefaultPageComponent>
     )
 }
