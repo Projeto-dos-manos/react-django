@@ -35,6 +35,9 @@ export const Global = createGlobalStyle`
 
         --text-00: 16px;
         --text-01: 12px;
+
+        --spacing-00: 40px;
+        --spacing-01: 20px;
     }
 
     html, body, div, span, applet, object, iframe,
@@ -63,7 +66,7 @@ export const Global = createGlobalStyle`
         height: 100%;
     }
     body {
-        background-color: white;
+        background-color: var(--grey-09);
         min-height: 100%;
         line-height: 1;
         overflow-x: hidden;
@@ -123,6 +126,10 @@ export const DefaultContainer = styled.div`
 export const DefaultContent = styled.div`
     width: 100%;
     max-width: 1200px;
+
+    @media(min-width: 1800px) {
+        max-width: 1400px;
+    }
 `;
 
 export const DefaultPage = styled.div`
