@@ -87,19 +87,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
+   'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'admin',  # Substitua pelo nome de usuário do MySQL
+        'PASSWORD': 'admin',  # Substitua pela senha do MySQL
+        'HOST': 'localhost',  # Ou o endereço do servidor MySQL
+        'PORT': '',  
     }
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'meio',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '250303',
-    #     'HOST': 'localhost',  # Ou o endereço do servidor PostgreSQL
-    #     'PORT': '',           # Deixe em branco para usar a porta padrão (5432)
-    # } 
 
 }
 
