@@ -11,6 +11,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install mysqlclient
 
+RUN  pip install Pillow
+
 COPY . .
 
 
