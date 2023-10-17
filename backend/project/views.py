@@ -3,8 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
-from .serializers import UserProfileSerializer, UserLoginSerializer  # Você precisará criar um arquivo serializers.py com o seu UserSerializer
-from .models import UserProfile
+from .serializers import UserProfileSerializer, UserLoginSerializer,ProductSerializer  # Você precisará criar um arquivo serializers.py com o seu UserSerializer
+from .models import UserProfile, Produto
 
 class UserViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]  
@@ -36,4 +36,23 @@ class UserViewSet(viewsets.ViewSet):
                 return Response({'status': 'Usuário entrou com sucesso'}, status=status.HTTP_201_CREATED)
             else:
                 return Response({'error': 'Este usuário não existe'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProductViewSet(viewsets.ViewSet):
+    permission_classes = [AllowAny]  
+
+    @action(detail=False, methods=['post'])
+    def create_product(self, request):
+        serializer = ProductSerializer(data=request.data)
+
+
+        if serializer.is_valid():
+            codigo_produto = serializer.validated_data['codigo_produto']
+            
+            if Produto.objects.filter(codigo_produto=codigo_produto).exists():
+                return Response({'error': 'Este codigo de produto já existe'}, status=status.HTTP_400_BAD_REQUEST)
+
+            serializer.save()
+            return Response({'status': 'Produto criado com sucesso'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
