@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from .serializers import UserProfileSerializer, UserLoginSerializer,ProductSerializer, ComentarioSerializer  # Você precisará criar um arquivo serializers.py com o seu UserSerializer
-from .models import UserProfile, Produto
+from .models import UserProfile, Produto, Comentario
 
 class UserViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]  
@@ -44,7 +44,7 @@ class ProductViewSet(viewsets.ViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProductSerializer
 
-    @action(detail=False, methods=['post'])
+    @action(detail=True, methods=['post'])
     def create_product(self, request):
         serializer = ProductSerializer(data=request.data)
 
@@ -74,11 +74,23 @@ class ProductViewSet(viewsets.ViewSet):
         except Produto.DoesNotExist:
             return Response({'error': 'Produto não encontrado'}, status=status.HTTP_404_NOT_FOUND)
 
+    @action(detail=True, methods=['put'])
+    def update_product(self, request, pk=None):
+        try:
+            produto = Produto.objects.get(pk=pk)
+            serializer = ProductSerializer(produto, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Produto.DoesNotExist:
+            return Response({'error': 'Produto não encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
 
 class ComentarioViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]
 
-    @action(detail=False, methods=['post'])
+    @action(detail=True, methods=['post'])
     def create_comentario(self, request, produto_id):
         try:
             produto = Produto.objects.get(pk=produto_id)
@@ -90,3 +102,11 @@ class ComentarioViewSet(viewsets.ViewSet):
             comentario = serializer.save(produto=produto)
             return Response({'status': 'Comentário criado com sucesso', 'comentario_id': comentario.id}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def view_comentario(self, request, pk=None):
+        try:
+            comentario = Comentario.objects.get(id=pk)
+            serializer = ComentarioSerializer(comentario)  
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Produto.DoesNotExist:
+            return Response({'error': 'Comentario não encontrado'}, status=status.HTTP_404_NOT_FOUND)

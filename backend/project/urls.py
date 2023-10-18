@@ -13,5 +13,8 @@ urlpatterns = [
     path('produtos/', ProductViewSet.as_view({'post': 'create_product'}), name='create_product'),
     path('produtos/<int:pk>/', ProductViewSet.as_view({'get': 'view_product'}), name='view_product'),
     path('produtos/<int:pk>/delete/', ProductViewSet.as_view({'get': 'delete_product'}), name='delete_product'),
+    path('produtos/<int:pk>/update/', ProductViewSet.as_view({'put': 'update_product'}), name='update_product'),
     path('produtos/<int:produto_id>/comentarios/', ComentarioViewSet.as_view({'post': 'create_comentario'}), name='create_comentario'),
+    path('comentarios/<int:pk>/', ComentarioViewSet.as_view({'get': 'view_comentario'}), name='view_comentario'),
+
 ]
