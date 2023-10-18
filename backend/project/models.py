@@ -23,17 +23,17 @@ class Produto(models.Model):
     def __str__(self):
         return self.nome
 
-# class Comentario(models.Model):
-#     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='comentarios')
-#     comentario = models.TextField()
+class Comentario(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='comentarios')
+    comentario = models.TextField()
 
-#     def __str__(self):
-#         return self.comentario
+    def __str__(self):
+        return self.comentario
 
 
-# class Avaliacao(models.Model):
-#     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='avaliacoes')
-#     avaliacao = models.DecimalField(max_digits=3, decimal_places=2)
+class Avaliacao(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='avaliacoes')
+    avaliacao = models.DecimalField(max_digits=3, decimal_places=2)
 
-#     def __str__(self):
-#         return f'Avaliação de {self.produto.nome}: {self.avaliacao}'
+    def __str__(self):
+        return f'Avaliação de {self.produto.nome}: {self.avaliacao}'
