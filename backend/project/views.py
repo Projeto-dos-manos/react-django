@@ -46,7 +46,6 @@ class ProductViewSet(viewsets.ViewSet):
     def create_product(self, request):
         serializer = ProductSerializer(data=request.data)
 
-
         if serializer.is_valid():
             codigo_produto = serializer.validated_data['codigo_produto']
             

@@ -16,6 +16,6 @@ class UserLoginSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Produto
-        fields = ['codigo_produto', 'nome', 'descricao', 'preco']
+        fields = '__all__'
 
 
